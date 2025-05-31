@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DateMate - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="text-primary">Date</span><span class="text-danger">Mate</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-page="matches">Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="messages">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Matches Section -->
+        <div id="matchesSection" class="content-section">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Filters -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Filters</h5>
+                            <form id="filterForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Age Range</label>
+                                    <div class="d-flex gap-2">
+                                        <input type="number" class="form-control" id="minAge" placeholder="Min" min="18">
+                                        <input type="number" class="form-control" id="maxAge" placeholder="Max" min="18">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Gender</label>
+                                    <select class="form-select" id="genderFilter">
+                                        <option value="">Any</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="locationFilter" placeholder="Enter location">
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- Matches Grid -->
+                    <div class="row g-4" id="matchesGrid">
+                        <!-- Match cards will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages Section -->
+        <div id="messagesSection" class="content-section d-none">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Conversations List -->
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Conversations</h5>
+                            <div class="list-group" id="conversationsList">
+                                <!-- Conversations will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- Chat Window -->
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div id="chatWindow" class="chat-window">
+                                <!-- Messages will be dynamically added here -->
+                            </div>
+                            <form id="messageForm" class="mt-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="messageInput" placeholder="Type your message...">
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div id="profileSection" class="content-section d-none">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Profile Picture -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body text-center">
+                            <img src="images/default-profile.jpg" alt="Profile Picture" class="rounded-circle mb-3" id="profilePicture" style="width: 200px; height: 200px; object-fit: cover;">
+                            <button class="btn btn-outline-primary" id="changePictureBtn">Change Picture</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- Profile Information -->
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Profile Information</h5>
+                            <form id="profileForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="profileName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="profileLocation">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Education</label>
+                                    <input type="text" class="form-control" id="profileEducation">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Occupation</label>
+                                    <input type="text" class="form-control" id="profileOccupation">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Bio</label>
+                                    <textarea class="form-control" id="profileBio" rows="4"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Interests</label>
+                                    <input type="text" class="form-control" id="profileInterests" placeholder="Separate interests with commas">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html> 
